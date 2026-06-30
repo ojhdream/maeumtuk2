@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import { initialEntries } from './data/initialEntries'
 import TodayTab from './features/today/TodayTab'
@@ -9,21 +9,68 @@ import EntryOverlay from './features/entry/EntryOverlay'
 import BottomNav from './components/BottomNav'
 import TukRitual from './components/TukRitual'
 
+const STORAGE_KEY = 'maeumtuk2.qaState.v1'
+
+const defaultQaState = {
+  entries: initialEntries,
+  tukCount: 8,
+  tab: 'today',
+  expandedThreads: [1],
+}
+
+function loadQaState() {
+  if (typeof window === 'undefined') return defaultQaState
+
+  try {
+    const rawState = window.localStorage.getItem(STORAGE_KEY)
+    if (!rawState) return defaultQaState
+
+    const parsedState = JSON.parse(rawState)
+    return {
+      entries: Array.isArray(parsedState.entries) ? parsedState.entries : defaultQaState.entries,
+      tukCount: Number.isFinite(parsedState.tukCount) ? parsedState.tukCount : defaultQaState.tukCount,
+      tab: typeof parsedState.tab === 'string' ? parsedState.tab : defaultQaState.tab,
+      expandedThreads: Array.isArray(parsedState.expandedThreads)
+        ? parsedState.expandedThreads
+        : defaultQaState.expandedThreads,
+    }
+  } catch {
+    return defaultQaState
+  }
+}
+
 function App() {
-  const [tab, setTab] = useState('today')
-  const [entries, setEntries] = useState(initialEntries)
-  const [tukCount, setTukCount] = useState(8)
+  const [qaState] = useState(loadQaState)
+  const [tab, setTab] = useState(qaState.tab)
+  const [entries, setEntries] = useState(qaState.entries)
+  const [tukCount, setTukCount] = useState(qaState.tukCount)
   const [isEntryOpen, setIsEntryOpen] = useState(false)
   const [isFabOpen, setIsFabOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [search, setSearch] = useState('')
-  const [expandedThreads, setExpandedThreads] = useState([1])
+  const [expandedThreads, setExpandedThreads] = useState(qaState.expandedThreads)
   const [inlineOpen, setInlineOpen] = useState(null)
   const [toast, setToast] = useState('')
   const [showRitual, setShowRitual] = useState(false)
 
   const stage = tukCount === 0 ? 'zero' : tukCount < 4 ? 'early' : tukCount < 10 ? 'growing' : 'ready'
   const todayEntries = entries.filter((entry) => entry.date === '5월 20일 화요일')
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          entries,
+          tukCount,
+          tab,
+          expandedThreads,
+        }),
+      )
+    } catch {
+      // QA persistence should never block the prototype UI.
+    }
+  }, [entries, tukCount, tab, expandedThreads])
 
   const filteredEntries = useMemo(() => {
     const q = search.trim().toLowerCase()
