@@ -1,0 +1,26 @@
+{
+  "name": "마음툭 모바일 UX QA",
+  "short_name": "마음툭",
+  "description": "Flutter 구현 전 확인하는 마음툭 모바일 UX QA 프로토타입",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F9FD",
+  "theme_color": "#F7F9FD",
+  "categories": ["productivity", "lifestyle"],
+  "icons": [
+    {
+      "src": "./pwa-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./pwa-maskable-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
