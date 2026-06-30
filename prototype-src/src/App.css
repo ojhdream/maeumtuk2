@@ -651,6 +651,54 @@ button {
   margin: 0 0 18px;
 }
 
+.month-nav {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 42px;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0 16px;
+}
+
+.month-nav-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 650;
+}
+
+.month-nav-btn:disabled {
+  color: #c5ccd8;
+  background: rgba(255, 255, 255, 0.54);
+}
+
+.month-chip {
+  min-width: 0;
+  height: 48px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 6px 18px rgba(16, 35, 62, 0.045);
+  color: #6f7c91;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 760;
+  letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.month-chip span {
+  color: #8a96aa;
+  font-size: 14px;
+}
+
 .search-panel {
   display: none;
   margin-bottom: 16px;
@@ -743,6 +791,26 @@ button {
   background: linear-gradient(135deg, #fff1b6, #fff);
   color: var(--ink);
   border-color: #ffe693;
+}
+
+.log-empty {
+  padding: 22px 18px;
+  margin-top: 8px;
+}
+
+.log-empty strong {
+  display: block;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 760;
+  margin-bottom: 8px;
+}
+
+.log-empty p {
+  margin: 0;
+  color: var(--sub);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .day-group {

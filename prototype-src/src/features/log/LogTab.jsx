@@ -2,11 +2,22 @@ import { useState } from 'react'
 import Brand from '../../components/Brand'
 
 export default function LogTab(props) {
-  const grouped = props.entries.reduce((acc, entry) => {
+  const months = ['2026년 4월', '2026년 5월', '2026년 6월']
+  const [monthIndex, setMonthIndex] = useState(1)
+  const currentMonth = months[monthIndex]
+  const monthNumber = currentMonth.match(/(\d+)월/)?.[1]
+  const monthEntries = monthNumber ? props.entries.filter((entry) => entry.date.startsWith(`${monthNumber}월`)) : props.entries
+  const grouped = monthEntries.reduce((acc, entry) => {
     acc[entry.date] = acc[entry.date] || []
     acc[entry.date].push(entry)
     return acc
   }, {})
+  const canGoPrev = monthIndex > 0
+  const canGoNext = monthIndex < months.length - 1
+
+  function moveMonth(direction) {
+    setMonthIndex((current) => Math.min(months.length - 1, Math.max(0, current + direction)))
+  }
 
   return (
     <section className="view active">
@@ -15,6 +26,17 @@ export default function LogTab(props) {
         <h1 className="log-title">툭로그</h1>
         <button type="button" className="search-icon-btn" onClick={props.onSearchOpen}>
           ⌕
+        </button>
+      </div>
+      <div className="month-nav" aria-label="월 이동">
+        <button type="button" className="month-nav-btn" onClick={() => moveMonth(-1)} disabled={!canGoPrev} aria-label="이전 달">
+          ‹
+        </button>
+        <button type="button" className="month-chip" onClick={() => props.onToast(`${currentMonth} 툭로그`)}>
+          {currentMonth} <span>▾</span>
+        </button>
+        <button type="button" className="month-nav-btn" onClick={() => moveMonth(1)} disabled={!canGoNext} aria-label="다음 달">
+          ›
         </button>
       </div>
       <p className="log-sub">화면 이동 없이 툭을 펼치고, 그 자리에서 이어 툭을 남겨요.</p>
@@ -41,16 +63,23 @@ export default function LogTab(props) {
           </button>
         ))}
       </div>
-      {Object.entries(grouped).map(([date, dateEntries]) => (
-        <section className="day-group" key={date}>
-          <div className="day-header">
-            {date} <span>{dateEntries.length}개</span>
-          </div>
-          {dateEntries.map((entry) => (
-            <LogEntry key={entry.id} entry={entry} {...props} />
-          ))}
+      {Object.entries(grouped).length > 0 ? (
+        Object.entries(grouped).map(([date, dateEntries]) => (
+          <section className="day-group" key={date}>
+            <div className="day-header">
+              {date} <span>{dateEntries.length}개</span>
+            </div>
+            {dateEntries.map((entry) => (
+              <LogEntry key={entry.id} entry={entry} {...props} />
+            ))}
+          </section>
+        ))
+      ) : (
+        <section className="log-empty panel">
+          <strong>이 달에는 아직 툭이 없어요.</strong>
+          <p>월을 이동해 다른 날의 툭을 확인해보세요.</p>
         </section>
-      ))}
+      )}
     </section>
   )
 }
