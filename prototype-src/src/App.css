@@ -1123,6 +1123,49 @@ button {
   margin-bottom: 20px;
 }
 
+.now-card--yellow,
+.now-hero-card.now-card--yellow {
+  background: linear-gradient(180deg, #fffdf5 0%, #fffaf0 100%);
+  border-color: #f3e6b8;
+}
+
+.now-card--green {
+  background: linear-gradient(180deg, #fbfffc 0%, #f1fbf5 100%);
+  border-color: #cdebd8;
+}
+
+.now-card--blue {
+  background: linear-gradient(180deg, #fbfdff 0%, #eef7ff 100%);
+  border-color: #cfe7fb;
+}
+
+.now-hero-card.is-locked {
+  background: linear-gradient(135deg, #fff, #f8fbff);
+  border-color: var(--line);
+}
+
+.color-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  width: fit-content;
+}
+
+.color-label--yellow {
+  color: #8c6b00;
+}
+
+.color-label--green {
+  color: #167446;
+}
+
+.color-label--blue {
+  color: #246fa8;
+}
+
 .card-head {
   margin-bottom: 16px;
 }
@@ -1135,6 +1178,12 @@ button {
 .card-head span {
   color: var(--sub);
   font-size: 13px;
+}
+
+.card-title-with-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .insight-sentence,
@@ -1154,6 +1203,13 @@ button {
   color: var(--ink);
 }
 
+.insight-sentence--warm,
+.word-summary--warm,
+.quote--warm {
+  background: rgba(255, 255, 255, 0.64);
+  border-color: rgba(255, 210, 63, 0.28);
+}
+
 .gather-grid {
   display: grid;
   gap: 10px;
@@ -1168,6 +1224,21 @@ button {
   border-radius: 18px;
   background: #fbfcfe;
   border: 1px solid var(--line);
+}
+
+.gather-card--green {
+  background: #f5fcf7;
+  border-color: #d2efdc;
+}
+
+.gather-card--yellow {
+  background: #fff9df;
+  border-color: #f2e0a4;
+}
+
+.gather-card--blue {
+  background: #f1f8ff;
+  border-color: #cfe7fb;
 }
 
 .gather-main {
@@ -1198,6 +1269,21 @@ button {
   color: #667286;
   font-size: 12px;
   font-weight: 700;
+}
+
+.gather-card--green .gather-badge {
+  background: var(--green-soft);
+  color: #167446;
+}
+
+.gather-card--yellow .gather-badge {
+  background: var(--yellow-soft);
+  color: #8c6b00;
+}
+
+.gather-card--blue .gather-badge {
+  background: var(--blue-soft);
+  color: #246fa8;
 }
 
 .tag {
@@ -1249,6 +1335,11 @@ button {
   background: #fbfcfe;
   border: 1px solid var(--line);
   margin-bottom: 12px;
+}
+
+.long-mind--blue {
+  background: #f5faff;
+  border-color: #d8ebfb;
 }
 
 .long-mind b {
