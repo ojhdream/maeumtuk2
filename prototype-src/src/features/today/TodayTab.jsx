@@ -11,9 +11,9 @@ export default function TodayTab({ stage, count, entries, onOpenEntry, onCycle, 
       <header className="today-hero">
         <div className="date">5월 20일 화요일</div>
         <h1 className="hero today-hero-title">
-          <span className="accent">툭</span>, 떠오른 게 있나요?
+          지금 떠오른 것을 <span className="accent">툭</span>.
         </h1>
-        <p className="guide-copy today-guide">한 단어여도 괜찮아요.</p>
+        <p className="guide-copy today-guide">생각도, 마음도, 할 일도.</p>
       </header>
 
       <button type="button" className="write-hero panel today-write-card" onClick={onOpenEntry}>
