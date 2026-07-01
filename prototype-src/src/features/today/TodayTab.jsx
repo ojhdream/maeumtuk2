@@ -29,8 +29,8 @@ export default function TodayTab({ stage, count, entries, onOpenEntry, onCycle, 
 
       {hasEntries ? (
         <>
-          <TodayInsight stage={stage} onGoTab={onGoTab} />
           <TodayList entries={recentEntries} onGoTab={onGoTab} />
+          <TodayInsight stage={stage} onGoTab={onGoTab} />
         </>
       ) : (
         <ZeroState count={count} onGoTab={onGoTab} />
