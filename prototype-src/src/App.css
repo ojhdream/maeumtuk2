@@ -1,11 +1,11 @@
 :root {
   /* MaeumTuk design tokens v1: keep these aligned with Flutter theme tokens. */
-  --bg: #f7f9fd;
-  --paper: #fff;
+  --bg: #fcfbf8;
+  --paper: #fffefa;
   --ink: #13243a;
   --text: #2d3645;
   --sub: #7f8a9a;
-  --line: #e6ecf5;
+  --line: #ebe7de;
   --yellow: #ffd23f;
   --yellow-soft: #fff4c8;
   --green: #72d091;
@@ -13,16 +13,16 @@
   --blue: #62b3ff;
   --blue-soft: #eaf5ff;
   --red: #e5484d;
-  --shadow: 0 14px 34px rgba(16, 35, 62, 0.12);
+  --shadow: 0 14px 32px rgba(45, 37, 24, 0.10);
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --pop: cubic-bezier(0.18, 1.25, 0.32, 1);
-  --font-today-hero: 25px;
+  --font-today-hero: 24px;
   --font-page-title: 30px;
   --font-section-title: 18px;
   --font-card-title: 20px;
   --font-body: 17px;
   --font-caption: 13px;
-  --weight-today-hero: 630;
+  --weight-today-hero: 600;
   --weight-page-title: 760;
   --weight-section-title: 720;
   --weight-card-title: 740;
@@ -37,7 +37,7 @@
   --radius-button: 18px;
   --radius-card: 24px;
   --radius-bottom-nav: 30px;
-  --shadow-card: 0 4px 18px rgba(16, 35, 62, 0.045);
+  --shadow-card: 0 6px 20px rgba(45, 37, 24, 0.045);
   --motion-micro: 220ms;
   --motion-page: 250ms;
   --motion-save-ritual: 1000ms;
@@ -63,8 +63,8 @@ button {
   height: min(844px, calc(100svh - 24px));
   min-height: 720px;
   border-radius: 36px;
-  background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
-  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.14);
+  background: linear-gradient(180deg, #fffefa 0%, var(--bg) 100%);
+  box-shadow: 0 30px 80px rgba(45, 37, 24, 0.12);
   overflow: hidden;
   position: relative;
 }
@@ -2416,9 +2416,12 @@ button {
   }
 }
 
-/* Today tab v1.2: SUIT 실험, 한 줄 hero, 기록 허들 낮추기 */
+/* Today tab v1.3: 따뜻한 크림 배경 + 출시 후보 톤 정리 */
 .today-screen {
   padding-bottom: 124px;
+  background:
+    radial-gradient(circle at 86% 8%, rgba(255, 210, 63, 0.055) 0 82px, transparent 83px),
+    linear-gradient(180deg, #fffefa 0%, #fcfbf8 54%, #f8f9fb 100%);
 }
 
 .today-hero {
@@ -2428,6 +2431,7 @@ button {
 
 .today-hero .date {
   margin-bottom: 18px;
+  color: #858b96;
 }
 
 .today-hero-title {
@@ -2442,7 +2446,7 @@ button {
 
 .today-hero-title .accent {
   color: #20b86a;
-  font-weight: 720;
+  font-weight: 700;
 }
 
 .today-guide {
@@ -2459,10 +2463,10 @@ button {
   min-height: 118px;
   padding: 16px 18px;
   margin: 0 0 24px;
-  border: 1px solid rgba(230, 236, 245, 0.92);
+  border: 1px solid rgba(235, 231, 222, 0.96);
   background:
-    radial-gradient(circle at 86% 20%, rgba(255, 210, 63, 0.12) 0 24px, transparent 25px),
-    rgba(255, 255, 255, 0.96);
+    radial-gradient(circle at 86% 20%, rgba(255, 210, 63, 0.13) 0 24px, transparent 25px),
+    rgba(255, 255, 255, 0.93);
   display: grid;
   grid-template-columns: 88px 1fr;
   align-items: center;
@@ -2501,7 +2505,7 @@ button {
   display: block;
   margin-bottom: 8px;
   color: var(--ink);
-  font-size: 20px;
+  font-size: 19px;
   line-height: 1.3;
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -2531,9 +2535,9 @@ button {
 .today-mini-progress {
   min-height: 44px;
   padding: 11px 13px;
-  border: 1px solid rgba(230, 236, 245, 0.92);
+  border: 1px solid rgba(235, 231, 222, 0.96);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.74);
   display: grid;
   grid-template-columns: 10px auto 1fr;
   align-items: center;
@@ -2564,8 +2568,10 @@ button {
 .today-insight {
   padding: 16px 17px;
   margin-bottom: 34px;
+  border-color: rgba(235, 231, 222, 0.96);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 251, 234, 0.82));
+    radial-gradient(circle at 88% 22%, rgba(255, 210, 63, 0.105) 0 28px, transparent 29px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 251, 234, 0.62));
   cursor: pointer;
   box-shadow: var(--shadow-card);
 }
@@ -2577,9 +2583,9 @@ button {
 .today-insight p {
   margin: 0 0 10px;
   color: var(--ink);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.55;
-  font-weight: 640;
+  font-weight: 620;
   letter-spacing: -0.02em;
 }
 
@@ -2621,6 +2627,7 @@ button {
 .today-list.compact .today-row {
   position: relative;
   padding: 18px 2px 17px;
+  border-bottom-color: rgba(45, 37, 24, 0.08);
 }
 
 .today-list.compact .today-title {
@@ -2659,7 +2666,7 @@ button {
 
 @media (max-width: 360px) {
   .today-hero-title {
-    font-size: 24px;
+    font-size: 23px;
   }
 
   .today-write-card {
