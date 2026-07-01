@@ -39,7 +39,6 @@ export default function LogTab(props) {
           ›
         </button>
       </div>
-      <p className="log-sub">화면 이동 없이 툭을 펼치고, 그 자리에서 이어 툭을 남겨요.</p>
       <div className={`search-panel ${props.isSearchOpen ? 'open' : ''}`}>
         <div className="search-box">
           ⌕
