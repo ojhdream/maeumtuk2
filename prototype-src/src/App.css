@@ -82,6 +82,12 @@ button {
   scrollbar-width: none;
 }
 
+.screen-log,
+.screen-now,
+.screen-me {
+  background: #eef2f7;
+}
+
 .screen::-webkit-scrollbar {
   display: none;
 }

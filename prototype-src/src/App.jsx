@@ -168,7 +168,7 @@ function App() {
   return (
     <section className="phone" aria-label="마음툭 React 모바일 프로토타입">
       <div className="app">
-        <main className="screen">
+        <main className={`screen screen-${tab}`}>
           {tab === 'today' && (
             <TodayTab
               stage={stage}
