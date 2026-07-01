@@ -2689,3 +2689,67 @@ button {
   }
 }
 
+/* Log tab: make controls quieter so the written records carry the view. */
+.month-nav {
+  grid-template-columns: 34px minmax(0, 1fr) 34px;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+
+.month-nav-btn {
+  width: 34px;
+  height: 34px;
+  font-size: 18px;
+}
+
+.month-chip {
+  height: 40px;
+  padding: 0 14px;
+  font-size: 16px;
+  font-weight: 720;
+  box-shadow: none;
+}
+
+.log-sub {
+  margin-bottom: 14px;
+  color: #8a96aa;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.filter-row {
+  margin-bottom: 16px;
+  padding-bottom: 6px;
+}
+
+.filter {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.day-header {
+  margin-top: 4px;
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+
+.log-entry {
+  padding: 18px 0;
+}
+
+.log-entry p {
+  color: #263348;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.entry-meta,
+.entry-left {
+  color: #8a96aa;
+  font-size: 12px;
+}
+
+.entry-type {
+  padding: 4px 9px;
+  font-size: 12px;
+}
