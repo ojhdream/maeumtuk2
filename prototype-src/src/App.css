@@ -2698,3 +2698,111 @@ button {
   }
 }
 
+/* Entry overlay v1.1: lower writing hurdle and make media-only entries clearer */
+.entry-overlay {
+  background: linear-gradient(180deg, #fffefa 0%, #fcfbf8 100%);
+}
+
+.entry-scroll {
+  padding-top: 12px;
+}
+
+.textarea-wrap {
+  min-height: 320px;
+  padding-top: 18px;
+}
+
+.entry-scroll textarea {
+  min-height: 270px;
+  color: #2f3b4d;
+  font-size: 17px;
+  line-height: 1.62;
+  font-weight: 430;
+  letter-spacing: -0.01em;
+}
+
+.entry-scroll textarea::placeholder {
+  color: #8f949b;
+  font-style: italic;
+  font-weight: 430;
+  line-height: 1.62;
+}
+
+.compose-maeumi {
+  right: 18px;
+  bottom: 4px;
+  width: 78px;
+  height: 56px;
+  opacity: 0.52;
+}
+
+.compose-maeumi-img {
+  width: 68px;
+}
+
+.compose-maeumi-dot {
+  width: 9px;
+  height: 9px;
+}
+
+.completion-area {
+  margin-top: 6px;
+  padding-top: 18px;
+}
+
+.name-field label {
+  font-size: 17px;
+  font-weight: 760;
+}
+
+.name-field .desc {
+  color: #8b94a3;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.entry-dock {
+  padding: 12px 14px calc(14px + env(safe-area-inset-bottom));
+}
+
+.tool-row {
+  gap: 12px;
+  margin-bottom: 9px;
+}
+
+.tool-pill {
+  height: 44px;
+  min-width: 88px;
+  padding: 0 17px;
+  border-radius: 18px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.tool-pill.active {
+  background: linear-gradient(135deg, #fff4c8, #fff);
+  border-color: #ffe7a0;
+}
+
+.dock-note {
+  color: #7f8a9a;
+  font-size: 12px;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+}
+
+.entry-overlay.composing .dock-note {
+  display: none;
+}
+
+@media (max-width: 360px) {
+  .entry-scroll textarea {
+    font-size: 16px;
+  }
+
+  .dock-note {
+    font-size: 11.5px;
+  }
+}

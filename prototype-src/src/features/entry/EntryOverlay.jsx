@@ -40,10 +40,8 @@ export default function EntryOverlay({ isOpen, onClose, onSave }) {
                 onChange={(event) => setText(event.target.value)}
                 onFocus={() => setIsComposing(true)}
                 onBlur={() => setIsComposing(false)}
-                placeholder={`스친 일, 생각, 해야 할 일,
-사진 한 장, 손으로 남긴 흔적.
-
-한 단어여도 괜찮아요.`}
+                placeholder={`스친 일, 생각, 해야 할 일.
+떠오른 만큼만 남겨보세요.`}
               ></textarea>
               <div className="compose-maeumi" aria-hidden="true">
                 <img className="compose-maeumi-img" src="./maeumi-base.svg" alt="" />
@@ -90,7 +88,7 @@ export default function EntryOverlay({ isOpen, onClose, onSave }) {
               <span className="label">손으로</span>
             </button>
           </div>
-          <div className="dock-note">먼저 적고, 나중에 사진·손으로·이름을 붙여요.</div>
+          <div className="dock-note">글 없이도 괜찮아요. 사진 한 장도, 손글씨 한 줄도 툭이에요.</div>
         </div>
       </div>
       <DateSheet
