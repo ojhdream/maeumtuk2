@@ -11,9 +11,9 @@ export default function TodayTab({ stage, count, entries, onOpenEntry, onCycle, 
       <header className="today-hero">
         <div className="date">5월 20일 화요일</div>
         <h1 className="hero today-hero-title">
-          지금,
+          <span className="accent">툭</span>,
           <br />
-          무엇이 <span className="accent">툭</span> 떠올랐나요?
+          떠오른 게 있나요?
         </h1>
         <p className="guide-copy today-guide">한 단어여도 괜찮아요.</p>
       </header>

@@ -16,17 +16,17 @@
   --shadow: 0 14px 34px rgba(16, 35, 62, 0.12);
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --pop: cubic-bezier(0.18, 1.25, 0.32, 1);
-  --font-today-hero: 28px;
+  --font-today-hero: 26px;
   --font-page-title: 30px;
-  --font-section-title: 17px;
+  --font-section-title: 18px;
   --font-card-title: 20px;
-  --font-body: 14px;
-  --font-caption: 12px;
-  --weight-today-hero: 720;
+  --font-body: 17px;
+  --font-caption: 13px;
+  --weight-today-hero: 660;
   --weight-page-title: 760;
   --weight-section-title: 720;
   --weight-card-title: 740;
-  --line-today-hero: 1.22;
+  --line-today-hero: 1.35;
   --line-page-title: 1.2;
   --space-screen-x: 22px;
   --space-brand-date: 24px;
@@ -2416,48 +2416,56 @@ button {
   }
 }
 
-/* Today tab RC QA refresh. Mirrors MAEUMTUK_DESIGN_TOKENS_V1 for Flutter handoff. */
+/* Today tab v1.1: 부담 낮추고, 기록을 더 잘 보이게 */
 .today-screen {
   padding-bottom: 124px;
 }
 
 .today-hero {
   margin-top: 8px;
-  margin-bottom: var(--space-guide-cta);
+  margin-bottom: 24px;
 }
 
 .today-hero .date {
-  margin-bottom: var(--space-date-hero);
+  margin-bottom: 18px;
 }
 
 .today-hero-title {
-  margin-bottom: var(--space-hero-guide);
+  margin: 0 0 14px;
+  color: var(--ink);
   font-size: var(--font-today-hero);
   line-height: var(--line-today-hero);
   font-weight: var(--weight-today-hero);
-  letter-spacing: 0;
+  letter-spacing: -0.025em;
+}
+
+.today-hero-title .accent {
+  color: #20b86a;
+  font-weight: 720;
 }
 
 .today-guide {
   margin: 0;
   color: #667286;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.55;
+  font-weight: 430;
+  letter-spacing: -0.01em;
 }
 
 .today-write-card {
   width: 100%;
-  min-height: 132px;
-  padding: 18px 18px 18px 20px;
-  margin: 0 0 26px;
+  min-height: 118px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
   border: 1px solid rgba(230, 236, 245, 0.92);
   background:
-    radial-gradient(circle at 84% 18%, rgba(255, 210, 63, 0.16) 0 30px, transparent 31px),
+    radial-gradient(circle at 86% 20%, rgba(255, 210, 63, 0.12) 0 24px, transparent 25px),
     rgba(255, 255, 255, 0.96);
   display: grid;
-  grid-template-columns: 96px 1fr;
+  grid-template-columns: 88px 1fr;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
   text-align: left;
   box-shadow: var(--shadow-card);
 }
@@ -2465,22 +2473,22 @@ button {
 .today-write-visual {
   position: relative;
   display: block;
-  width: 92px;
-  height: 76px;
+  width: 86px;
+  height: 70px;
 }
 
 .today-write-visual .maeumi-base-img {
   position: absolute;
   left: 50%;
   bottom: 0;
-  width: 78px;
+  width: 74px;
   transform: translateX(-50%);
 }
 
 .today-write-visual .maeumi-dot-css {
   position: absolute;
   top: 0;
-  right: 6px;
+  right: 7px;
   width: 13px;
   height: 13px;
   border-radius: 999px;
@@ -2492,22 +2500,24 @@ button {
   display: block;
   margin-bottom: 8px;
   color: var(--ink);
-  font-size: var(--font-card-title);
-  font-weight: var(--weight-card-title);
-  letter-spacing: 0;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 .today-write-copy span {
   display: block;
   color: #667286;
-  font-size: var(--font-body);
-  line-height: 1.48;
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 430;
 }
 
 .today-zero {
-  margin: -6px 2px 26px;
+  margin: -2px 2px 28px;
   color: var(--sub);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.62;
 }
 
@@ -2539,19 +2549,20 @@ button {
 .today-mini-progress span {
   color: var(--ink);
   font-size: 13px;
-  font-weight: 740;
+  font-weight: 700;
 }
 
 .today-mini-progress p {
   margin: 0;
   color: #8a96aa;
-  font-size: var(--font-caption);
+  font-size: 13px;
 }
 
 .today-insight {
   padding: 16px 17px;
-  margin-bottom: 26px;
-  background: linear-gradient(135deg, #fff, #fffbea);
+  margin-bottom: 34px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 251, 234, 0.82));
   cursor: pointer;
   box-shadow: var(--shadow-card);
 }
@@ -2563,10 +2574,10 @@ button {
 .today-insight p {
   margin: 0 0 10px;
   color: var(--ink);
-  font-size: 16px;
-  line-height: 1.52;
+  font-size: 17px;
+  line-height: 1.55;
   font-weight: 640;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
 }
 
 .today-insight button {
@@ -2576,15 +2587,19 @@ button {
   color: #3a7e59;
   font: inherit;
   font-size: 13px;
-  font-weight: var(--weight-section-title);
+  font-weight: 700;
 }
 
 .today-section-head {
-  margin-top: 2px;
+  margin: 0 2px 16px;
 }
 
 .today-section-head h2 {
-  font-size: var(--font-section-title);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .today-section-head button {
@@ -2601,16 +2616,38 @@ button {
 }
 
 .today-list.compact .today-row {
-  padding: 13px 2px 12px;
+  position: relative;
+  padding: 18px 2px 17px;
 }
 
 .today-list.compact .today-title {
-  font-size: var(--font-body);
+  margin-bottom: 9px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .today-list.compact p {
+  color: #3f4b5f;
+  font-size: 17px;
+  line-height: 1.6;
+  font-weight: 430;
+  letter-spacing: -0.012em;
+  -webkit-line-clamp: 2;
+}
+
+.today-list.compact .today-meta {
+  margin-top: 13px;
+  color: #8a96aa;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.4;
+}
+
+.today-list.compact .dot {
+  width: 8px;
+  height: 8px;
 }
 
 .today-ways {
@@ -2619,7 +2656,7 @@ button {
 
 @media (max-width: 360px) {
   .today-write-card {
-    grid-template-columns: 76px 1fr;
+    grid-template-columns: 74px 1fr;
     gap: 14px;
     padding-inline: 16px;
   }
@@ -2631,4 +2668,9 @@ button {
   .today-write-copy strong {
     font-size: 18px;
   }
+
+  .today-list.compact p {
+    font-size: 16px;
+  }
 }
+
