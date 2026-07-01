@@ -1,4 +1,5 @@
 :root {
+  /* MaeumTuk design tokens v1: keep these aligned with Flutter theme tokens. */
   --bg: #f7f9fd;
   --paper: #fff;
   --ink: #13243a;
@@ -15,6 +16,32 @@
   --shadow: 0 14px 34px rgba(16, 35, 62, 0.12);
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --pop: cubic-bezier(0.18, 1.25, 0.32, 1);
+  --font-today-hero: 28px;
+  --font-page-title: 30px;
+  --font-section-title: 17px;
+  --font-card-title: 20px;
+  --font-body: 14px;
+  --font-caption: 12px;
+  --weight-today-hero: 720;
+  --weight-page-title: 760;
+  --weight-section-title: 720;
+  --weight-card-title: 740;
+  --line-today-hero: 1.22;
+  --line-page-title: 1.2;
+  --space-screen-x: 22px;
+  --space-brand-date: 24px;
+  --space-date-hero: 18px;
+  --space-hero-guide: 14px;
+  --space-guide-cta: 24px;
+  --space-card-gap: 24px;
+  --radius-button: 18px;
+  --radius-card: 24px;
+  --radius-bottom-nav: 30px;
+  --shadow-card: 0 4px 18px rgba(16, 35, 62, 0.045);
+  --motion-micro: 220ms;
+  --motion-page: 250ms;
+  --motion-save-ritual: 1000ms;
+  --motion-maeumi-dot: 3200ms;
 }
 
 * {
@@ -2386,5 +2413,222 @@ button {
   *::after {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+/* Today tab RC QA refresh. Mirrors MAEUMTUK_DESIGN_TOKENS_V1 for Flutter handoff. */
+.today-screen {
+  padding-bottom: 124px;
+}
+
+.today-hero {
+  margin-top: 8px;
+  margin-bottom: var(--space-guide-cta);
+}
+
+.today-hero .date {
+  margin-bottom: var(--space-date-hero);
+}
+
+.today-hero-title {
+  margin-bottom: var(--space-hero-guide);
+  font-size: var(--font-today-hero);
+  line-height: var(--line-today-hero);
+  font-weight: var(--weight-today-hero);
+  letter-spacing: 0;
+}
+
+.today-guide {
+  margin: 0;
+  color: #667286;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.today-write-card {
+  width: 100%;
+  min-height: 132px;
+  padding: 18px 18px 18px 20px;
+  margin: 0 0 26px;
+  border: 1px solid rgba(230, 236, 245, 0.92);
+  background:
+    radial-gradient(circle at 84% 18%, rgba(255, 210, 63, 0.16) 0 30px, transparent 31px),
+    rgba(255, 255, 255, 0.96);
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+  box-shadow: var(--shadow-card);
+}
+
+.today-write-visual {
+  position: relative;
+  display: block;
+  width: 92px;
+  height: 76px;
+}
+
+.today-write-visual .maeumi-base-img {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 78px;
+  transform: translateX(-50%);
+}
+
+.today-write-visual .maeumi-dot-css {
+  position: absolute;
+  top: 0;
+  right: 6px;
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+  background: #f7c948;
+  box-shadow: 0 0 0 5px rgba(247, 201, 72, 0.14);
+}
+
+.today-write-copy strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-size: var(--font-card-title);
+  font-weight: var(--weight-card-title);
+  letter-spacing: 0;
+}
+
+.today-write-copy span {
+  display: block;
+  color: #667286;
+  font-size: var(--font-body);
+  line-height: 1.48;
+}
+
+.today-zero {
+  margin: -6px 2px 26px;
+  color: var(--sub);
+  font-size: 13px;
+  line-height: 1.62;
+}
+
+.today-zero p {
+  margin: 0 0 14px;
+}
+
+.today-mini-progress {
+  min-height: 44px;
+  padding: 11px 13px;
+  border: 1px solid rgba(230, 236, 245, 0.92);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  display: grid;
+  grid-template-columns: 10px auto 1fr;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.mini-progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--yellow);
+  box-shadow: 0 0 0 5px rgba(255, 210, 63, 0.13);
+}
+
+.today-mini-progress span {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 740;
+}
+
+.today-mini-progress p {
+  margin: 0;
+  color: #8a96aa;
+  font-size: var(--font-caption);
+}
+
+.today-insight {
+  padding: 16px 17px;
+  margin-bottom: 26px;
+  background: linear-gradient(135deg, #fff, #fffbea);
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+}
+
+.today-insight .state-label {
+  margin-bottom: 8px;
+}
+
+.today-insight p {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.52;
+  font-weight: 640;
+  letter-spacing: 0;
+}
+
+.today-insight button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #3a7e59;
+  font: inherit;
+  font-size: 13px;
+  font-weight: var(--weight-section-title);
+}
+
+.today-section-head {
+  margin-top: 2px;
+}
+
+.today-section-head h2 {
+  font-size: var(--font-section-title);
+}
+
+.today-section-head button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--sub);
+  font: inherit;
+  font-size: 13px;
+}
+
+.today-list.compact {
+  margin-bottom: 0;
+}
+
+.today-list.compact .today-row {
+  padding: 13px 2px 12px;
+}
+
+.today-list.compact .today-title {
+  font-size: var(--font-body);
+}
+
+.today-list.compact p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.today-ways {
+  display: none !important;
+}
+
+@media (max-width: 360px) {
+  .today-write-card {
+    grid-template-columns: 76px 1fr;
+    gap: 14px;
+    padding-inline: 16px;
+  }
+
+  .today-write-visual {
+    width: 74px;
+  }
+
+  .today-write-copy strong {
+    font-size: 18px;
   }
 }
