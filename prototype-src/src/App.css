@@ -2819,36 +2819,36 @@ button {
 }
 
 .month-nav {
-  grid-template-columns: 36px minmax(0, 1fr) 36px;
-  gap: 8px;
-  margin: 0 0 14px;
+  grid-template-columns: 30px minmax(0, 1fr) 30px;
+  gap: 7px;
+  margin: 0 0 12px;
 }
 
 .month-nav-btn {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   border-color: rgba(235, 231, 222, 0.95);
   background: rgba(255, 255, 255, 0.88);
   box-shadow: none;
   color: var(--ink);
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 650;
 }
 
 .month-chip {
-  height: 42px;
-  padding: 0 15px;
+  height: 36px;
+  padding: 0 12px;
   border-color: rgba(235, 231, 222, 0.95);
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 3px 12px rgba(45, 37, 24, 0.035);
   color: #6f7c91;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 730;
 }
 
 .month-chip span {
   color: #9aa3b0;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .log-sub {
@@ -2998,17 +2998,17 @@ button {
   }
 
   .month-nav {
-    grid-template-columns: 34px minmax(0, 1fr) 34px;
+    grid-template-columns: 28px minmax(0, 1fr) 28px;
   }
 
   .month-nav-btn {
-    width: 34px;
-    height: 34px;
+    width: 28px;
+    height: 28px;
   }
 
   .month-chip {
-    height: 40px;
-    font-size: 15px;
+    height: 34px;
+    font-size: 13px;
   }
 
   .log-entry p,
