@@ -100,18 +100,21 @@ function App() {
     setIsFabOpen(false)
   }
 
-  function saveEntry({ text, name, hasPhoto, hasHand }) {
+  function saveEntry({ text, name, hasPhoto, hasHand, photoData, handData }) {
     const isFirstTuk = tukCount === 0
+    const fallbackText = hasPhoto || hasHand ? '말 대신 남긴 툭이에요.' : '짧은 마음 하나를 툭 남겼어요.'
     const nextEntry = {
       id: Date.now(),
       date: '5월 20일 화요일',
       time: new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false }),
-      type: hasPhoto && hasHand ? '글 · 사진 · 손으로' : hasPhoto ? '글 · 사진' : hasHand ? '글 · 손으로' : '글',
+      type: getEntryType(Boolean(text), hasPhoto, hasHand),
       tone: hasPhoto ? 'mix' : hasHand ? 'hand' : 'text',
       name,
-      text: text || '짧은 마음 하나를 툭 남겼어요.',
+      text: text || fallbackText,
       photo: hasPhoto,
+      photoData: photoData || '',
       hand: hasHand,
+      handData: handData || '',
       follows: [],
     }
     setEntries((current) => [nextEntry, ...current])
@@ -121,6 +124,14 @@ function App() {
     window.setTimeout(() => setShowRitual(true), 0)
     window.setTimeout(() => setShowRitual(false), 1300)
     window.setTimeout(() => showToast(isFirstTuk ? '첫 번째 툭이 남았어요' : '툭 남겼어요'), 920)
+  }
+
+  function getEntryType(hasText, hasPhoto, hasHand) {
+    const parts = []
+    if (hasText) parts.push('글')
+    if (hasPhoto) parts.push('사진')
+    if (hasHand) parts.push('손으로')
+    return parts.length ? parts.join(' · ') : '글'
   }
 
   function toggleThread(id) {

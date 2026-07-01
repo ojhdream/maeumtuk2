@@ -21,7 +21,7 @@ export default function LogTab(props) {
 
   return (
     <section className="view active">
-      <Brand action="☷" />
+      <Brand action="툭" />
       <div className="log-head-row">
         <h1 className="log-title">툭로그</h1>
         <button type="button" className="search-icon-btn" onClick={props.onSearchOpen}>
@@ -42,13 +42,13 @@ export default function LogTab(props) {
       <div className={`search-panel ${props.isSearchOpen ? 'open' : ''}`}>
         <div className="search-box">
           ⌕
-          <input value={props.search} onChange={(event) => props.onSearch(event.target.value)} placeholder="마음 이름, 단어, 툭 검색" />
+          <input value={props.search} onChange={(event) => props.onSearch(event.target.value)} placeholder="마음 이름, 단어, 날 검색" />
           <button type="button" className="search-cancel" onClick={props.onSearchClose}>
             취소
           </button>
         </div>
         <div className="search-chips">
-          {['좋은 저녁', '괜찮아지는 중', '하윤'].map((value) => (
+          {['좋은 저녁', '괜찮아지는 중', '서운'].map((value) => (
             <button type="button" className="search-chip" key={value} onClick={() => props.onQuickSearch(value)}>
               {value}
             </button>
@@ -76,7 +76,7 @@ export default function LogTab(props) {
       ) : (
         <section className="log-empty panel">
           <strong>이 달에는 아직 툭이 없어요.</strong>
-          <p>월을 이동해 다른 날의 툭을 확인해보세요.</p>
+          <p>달을 이동해 다른 날의 툭을 확인해보세요.</p>
         </section>
       )}
     </section>
@@ -95,14 +95,24 @@ function LogEntry({ entry, expandedThreads, inlineOpen, onToggleThread, onOpenIn
           <span>{entry.time}</span>
           <span className={`entry-type ${entry.tone}`}>{entry.type}</span>
         </div>
-        <button type="button" className="more-btn" onClick={() => onToast('QA용 메뉴: 수정 · 이어툭 · 남겨둠 · 삭제')}>
+        <button type="button" className="more-btn" onClick={() => onToast('QA용 메뉴: 수정 · 이어툭 · 숨기기 · 삭제')}>
           ⋯
         </button>
       </div>
       <p>{entry.text}</p>
       {entry.name && <span className="name-chip">{entry.name}</span>}
-      {entry.photo && <div className="photo-chip">사진</div>}
-      {entry.hand && <div className="hand-preview"></div>}
+      {entry.photo &&
+        (entry.photoData ? (
+          <img className="photo-chip saved-photo" src={entry.photoData} alt="저장된 사진" />
+        ) : (
+          <div className="photo-chip">사진</div>
+        ))}
+      {entry.hand &&
+        (entry.handData ? (
+          <img className="hand-preview saved-hand" src={entry.handData} alt="저장된 손그림" />
+        ) : (
+          <div className="hand-preview"></div>
+        ))}
       <div className="entry-actions">
         {entry.follows.length > 0 && (
           <button type="button" className="tiny-btn primary" onClick={() => onToggleThread(entry.id)}>
@@ -132,7 +142,7 @@ function LogEntry({ entry, expandedThreads, inlineOpen, onToggleThread, onOpenIn
           <textarea
             value={inlineText}
             onChange={(event) => setInlineText(event.target.value)}
-            placeholder="이 툭에 이어서 떠오른 마음을 남겨보세요."
+            placeholder="이 툭에 이어 떠오른 마음을 남겨보세요."
           ></textarea>
           <div className="inline-tools">
             <span>원본 툭에 조각처럼 붙어요.</span>

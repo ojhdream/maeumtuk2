@@ -2797,6 +2797,73 @@ button {
   display: none;
 }
 
+.hidden-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.photo-preview-img,
+.handwrite-preview-img {
+  display: block;
+  width: 100%;
+  max-height: 180px;
+  border-radius: 18px;
+  background: #f8fafc;
+  object-fit: cover;
+}
+
+.handwrite-preview-img {
+  object-fit: contain;
+  border: 1px solid rgba(222, 228, 237, 0.9);
+}
+
+.attach-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.attach-caption button {
+  border: 0;
+  background: transparent;
+  color: #8a96aa;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.hand-top .attach:disabled {
+  opacity: 0.35;
+}
+
+.photo-chip.saved-photo {
+  display: block;
+  width: min(190px, 68vw);
+  height: 128px;
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  background: #f8fafc;
+  object-fit: cover;
+}
+
+.hand-preview.saved-hand {
+  display: block;
+  width: min(210px, 72vw);
+  height: 96px;
+  border: 1px solid rgba(222, 228, 237, 0.92);
+  background: #fff;
+  object-fit: contain;
+}
+
+.hand-preview.saved-hand::before {
+  display: none;
+}
+
 @media (max-width: 360px) {
   .entry-scroll textarea {
     font-size: 16px;

@@ -1,21 +1,50 @@
 import { useEffect, useRef, useState } from 'react'
 
+const PHOTO_MAX_SIZE = 1200
+
 export default function EntryOverlay({ isOpen, onClose, onSave }) {
+  const fileInputRef = useRef(null)
   const [text, setText] = useState('')
   const [name, setName] = useState('')
-  const [hasPhoto, setHasPhoto] = useState(false)
-  const [hasHand, setHasHand] = useState(false)
+  const [photoData, setPhotoData] = useState('')
+  const [handData, setHandData] = useState('')
   const [dateLabel, setDateLabel] = useState('오늘 11:47')
   const [dateOpen, setDateOpen] = useState(false)
   const [handOpen, setHandOpen] = useState(false)
   const [isComposing, setIsComposing] = useState(false)
 
-  function submit() {
-    onSave({ text: text.trim(), name: name.trim(), hasPhoto, hasHand })
+  const hasPhoto = Boolean(photoData)
+  const hasHand = Boolean(handData)
+
+  function resetComposer() {
     setText('')
     setName('')
-    setHasPhoto(false)
-    setHasHand(false)
+    setPhotoData('')
+    setHandData('')
+    if (fileInputRef.current) fileInputRef.current.value = ''
+  }
+
+  function submit() {
+    onSave({
+      text: text.trim(),
+      name: name.trim(),
+      hasPhoto,
+      hasHand,
+      photoData,
+      handData,
+    })
+    resetComposer()
+  }
+
+  function choosePhoto() {
+    fileInputRef.current?.click()
+  }
+
+  async function handlePhotoChange(event) {
+    const file = event.target.files?.[0]
+    if (!file) return
+    const dataUrl = await readPhotoAsDataUrl(file)
+    setPhotoData(dataUrl)
   }
 
   return (
@@ -23,15 +52,16 @@ export default function EntryOverlay({ isOpen, onClose, onSave }) {
       <div className="entry-shell">
         <div className="entry-bar refined-entry-bar">
           <button type="button" className="back" onClick={onClose}>
-            ‹
+            ×
           </button>
           <button type="button" className="entry-date-btn refined-date" onClick={() => setDateOpen(true)}>
-            {dateLabel} ›
+            {dateLabel} ▾
           </button>
           <button type="button" className="done" onClick={submit}>
             완료
           </button>
         </div>
+
         <div className="entry-scroll">
           <div className="compose-card">
             <div className="textarea-wrap">
@@ -48,24 +78,32 @@ export default function EntryOverlay({ isOpen, onClose, onSave }) {
                 <span className="compose-maeumi-dot"></span>
               </div>
             </div>
+
             {hasPhoto && (
               <div className="attach-preview show">
-                <div className="photo-preview">사진</div>
-                <div className="attach-caption">사진을 함께 남겨요.</div>
+                <img className="photo-preview-img" src={photoData} alt="첨부한 사진" />
+                <div className="attach-caption">
+                  사진을 함께 남겨요.
+                  <button type="button" onClick={() => setPhotoData('')}>
+                    지우기
+                  </button>
+                </div>
               </div>
             )}
+
             {hasHand && (
               <div className="attach-preview show">
-                <div className="handwrite-preview">
-                  <svg width="140" height="70" viewBox="0 0 140 70" fill="none">
-                    <path d="M8 40C30 15 55 54 80 27C95 12 110 19 126 31" stroke="#72D091" strokeWidth="5" strokeLinecap="round" />
-                    <path d="M38 55C63 46 78 49 103 58" stroke="#62B3FF" strokeWidth="4" strokeLinecap="round" />
-                  </svg>
+                <img className="handwrite-preview-img" src={handData} alt="손으로 남긴 흔적" />
+                <div className="attach-caption">
+                  손으로 남긴 흔적을 함께 남겨요.
+                  <button type="button" onClick={() => setHandData('')}>
+                    지우기
+                  </button>
                 </div>
-                <div className="attach-caption">손으로 남긴 흔적을 함께 남겨요.</div>
               </div>
             )}
           </div>
+
           <div className="completion-area">
             <div className="name-field">
               <label>이 순간의 이름은?</label>
@@ -77,20 +115,23 @@ export default function EntryOverlay({ isOpen, onClose, onSave }) {
             <p className="entry-help">마음 이름은 나중에 툭로그와 요즘 탭에서 다시 찾는 단서가 돼요.</p>
           </div>
         </div>
+
         <div className="entry-dock">
+          <input ref={fileInputRef} type="file" accept="image/*" className="hidden-file-input" onChange={handlePhotoChange} />
           <div className="tool-row">
-            <button type="button" className={`tool-pill ${hasPhoto ? 'active' : ''}`} onClick={() => setHasPhoto((value) => !value)}>
+            <button type="button" className={`tool-pill ${hasPhoto ? 'active' : ''}`} onClick={choosePhoto}>
               <span className="symbol">▧</span>
-              <span className="label">사진</span>
+              <span className="label">{hasPhoto ? '사진 변경' : '사진'}</span>
             </button>
             <button type="button" className={`tool-pill ${hasHand ? 'active' : ''}`} onClick={() => setHandOpen(true)}>
               <span className="symbol">〰</span>
-              <span className="label">손으로</span>
+              <span className="label">{hasHand ? '손그림 수정' : '손으로'}</span>
             </button>
           </div>
           <div className="dock-note">글 없이도 괜찮아요. 사진 한 장도, 손글씨 한 줄도 툭이에요.</div>
         </div>
       </div>
+
       <DateSheet
         isOpen={dateOpen}
         selected={dateLabel}
@@ -102,9 +143,10 @@ export default function EntryOverlay({ isOpen, onClose, onSave }) {
       />
       <HandSheet
         isOpen={handOpen}
+        initialData={handData}
         onClose={() => setHandOpen(false)}
-        onAttach={() => {
-          setHasHand(true)
+        onAttach={(dataUrl) => {
+          setHandData(dataUrl)
           setHandOpen(false)
         }}
       />
@@ -131,13 +173,14 @@ function DateSheet({ isOpen, selected, onSelect, onClose }) {
   )
 }
 
-function HandSheet({ isOpen, onClose, onAttach }) {
+function HandSheet({ isOpen, initialData, onClose, onAttach }) {
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const historyRef = useRef([])
   const drawingRef = useRef(false)
   const [brush, setBrush] = useState('#111')
   const [isEraser, setIsEraser] = useState(false)
+  const [hasInk, setHasInk] = useState(Boolean(initialData))
   const colors = ['#111', '#72D091', '#FFD23F', '#62B3FF']
 
   useEffect(() => {
@@ -153,7 +196,20 @@ function HandSheet({ isOpen, onClose, onAttach }) {
     context.lineCap = 'round'
     context.lineJoin = 'round'
     contextRef.current = context
-  }, [isOpen])
+    historyRef.current = []
+    setHasInk(Boolean(initialData))
+
+    if (initialData) {
+      const image = new Image()
+      image.onload = () => {
+        context.clearRect(0, 0, rect.width, rect.height)
+        context.drawImage(image, 0, 0, rect.width, rect.height)
+      }
+      image.src = initialData
+    } else {
+      context.clearRect(0, 0, rect.width, rect.height)
+    }
+  }, [isOpen, initialData])
 
   function point(event) {
     const rect = canvasRef.current.getBoundingClientRect()
@@ -166,7 +222,7 @@ function HandSheet({ isOpen, onClose, onAttach }) {
   function saveHistory() {
     const canvas = canvasRef.current
     if (!canvas) return
-    historyRef.current = [...historyRef.current.slice(-12), canvas.toDataURL()]
+    historyRef.current = [...historyRef.current.slice(-12), canvas.toDataURL('image/png')]
   }
 
   function startDrawing(event) {
@@ -189,6 +245,7 @@ function HandSheet({ isOpen, onClose, onAttach }) {
     context.lineWidth = isEraser ? 22 : 6
     context.lineTo(nextPoint.x, nextPoint.y)
     context.stroke()
+    setHasInk(true)
   }
 
   function stopDrawing() {
@@ -206,6 +263,7 @@ function HandSheet({ isOpen, onClose, onAttach }) {
       const rect = canvas.getBoundingClientRect()
       context.clearRect(0, 0, rect.width, rect.height)
       context.drawImage(image, 0, 0, rect.width, rect.height)
+      setHasInk(true)
     }
     image.src = previous
   }
@@ -217,11 +275,18 @@ function HandSheet({ isOpen, onClose, onAttach }) {
     saveHistory()
     const rect = canvas.getBoundingClientRect()
     context.clearRect(0, 0, rect.width, rect.height)
+    setHasInk(false)
   }
 
   function pickColor(color) {
     setBrush(color)
     setIsEraser(false)
+  }
+
+  function attachDrawing() {
+    const canvas = canvasRef.current
+    if (!canvas || !hasInk) return
+    onAttach(canvas.toDataURL('image/png'))
   }
 
   return (
@@ -232,7 +297,7 @@ function HandSheet({ isOpen, onClose, onAttach }) {
             ×
           </button>
           <div className="title">손으로 남기기</div>
-          <button type="button" className="attach" onClick={onAttach}>
+          <button type="button" className="attach" onClick={attachDrawing} disabled={!hasInk}>
             붙이기
           </button>
         </div>
@@ -272,4 +337,30 @@ function HandSheet({ isOpen, onClose, onAttach }) {
       </div>
     </section>
   )
+}
+
+function readPhotoAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = () => {
+      const image = new Image()
+      image.onload = () => resolve(resizeImage(image))
+      image.onerror = reject
+      image.src = reader.result
+    }
+    reader.onerror = reject
+    reader.readAsDataURL(file)
+  })
+}
+
+function resizeImage(image) {
+  const scale = Math.min(1, PHOTO_MAX_SIZE / Math.max(image.width, image.height))
+  const width = Math.max(1, Math.round(image.width * scale))
+  const height = Math.max(1, Math.round(image.height * scale))
+  const canvas = document.createElement('canvas')
+  canvas.width = width
+  canvas.height = height
+  const context = canvas.getContext('2d')
+  context.drawImage(image, 0, 0, width, height)
+  return canvas.toDataURL('image/jpeg', 0.82)
 }
