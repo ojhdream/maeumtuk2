@@ -11,9 +11,7 @@ export default function TodayTab({ stage, count, entries, onOpenEntry, onCycle, 
       <header className="today-hero">
         <div className="date">5월 20일 화요일</div>
         <h1 className="hero today-hero-title">
-          <span className="accent">툭</span>,
-          <br />
-          떠오른 게 있나요?
+          <span className="accent">툭</span>, 떠오른 게 있나요?
         </h1>
         <p className="guide-copy today-guide">한 단어여도 괜찮아요.</p>
       </header>
@@ -25,7 +23,7 @@ export default function TodayTab({ stage, count, entries, onOpenEntry, onCycle, 
         </span>
         <span className="today-write-copy">
           <strong>{hasEntries ? '툭 남기기' : '첫 툭 남기기'}</strong>
-          <span>지금 떠오른 마음을 여기에 잠깐 두고 가세요.</span>
+          <span>한 단어도, 사진 한 장도, 손글씨도 괜찮아요.</span>
         </span>
       </button>
 

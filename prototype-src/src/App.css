@@ -16,17 +16,17 @@
   --shadow: 0 14px 34px rgba(16, 35, 62, 0.12);
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --pop: cubic-bezier(0.18, 1.25, 0.32, 1);
-  --font-today-hero: 26px;
+  --font-today-hero: 25px;
   --font-page-title: 30px;
   --font-section-title: 18px;
   --font-card-title: 20px;
   --font-body: 17px;
   --font-caption: 13px;
-  --weight-today-hero: 660;
+  --weight-today-hero: 630;
   --weight-page-title: 760;
   --weight-section-title: 720;
   --weight-card-title: 740;
-  --line-today-hero: 1.35;
+  --line-today-hero: 1.32;
   --line-page-title: 1.2;
   --space-screen-x: 22px;
   --space-brand-date: 24px;
@@ -2416,7 +2416,7 @@ button {
   }
 }
 
-/* Today tab v1.1: 부담 낮추고, 기록을 더 잘 보이게 */
+/* Today tab v1.2: SUIT 실험, 한 줄 hero, 기록 허들 낮추기 */
 .today-screen {
   padding-bottom: 124px;
 }
@@ -2437,6 +2437,7 @@ button {
   line-height: var(--line-today-hero);
   font-weight: var(--weight-today-hero);
   letter-spacing: -0.025em;
+  word-break: keep-all;
 }
 
 .today-hero-title .accent {
@@ -2447,7 +2448,7 @@ button {
 .today-guide {
   margin: 0;
   color: #667286;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.55;
   font-weight: 430;
   letter-spacing: -0.01em;
@@ -2512,6 +2513,8 @@ button {
   font-size: 15px;
   line-height: 1.55;
   font-weight: 430;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
 }
 
 .today-zero {
@@ -2655,6 +2658,10 @@ button {
 }
 
 @media (max-width: 360px) {
+  .today-hero-title {
+    font-size: 24px;
+  }
+
   .today-write-card {
     grid-template-columns: 74px 1fr;
     gap: 14px;
@@ -2669,6 +2676,7 @@ button {
     font-size: 18px;
   }
 
+  .today-write-copy span,
   .today-list.compact p {
     font-size: 16px;
   }
