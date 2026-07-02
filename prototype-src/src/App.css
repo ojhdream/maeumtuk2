@@ -4311,19 +4311,19 @@ body {
 
 .today-final-maeumi {
   flex: 0 0 auto;
-  width: 92px;
-  height: 58px;
+  width: 101px;
+  height: 64px;
   margin: 0 8px 2px 0;
 }
 
 .today-final-maeumi img {
-  width: 76px;
+  width: 84px;
 }
 
 .today-final-maeumi span {
-  width: 9px;
-  height: 9px;
-  right: 10px;
+  width: 10px;
+  height: 10px;
+  right: 11px;
   top: 3px;
 }
 
@@ -4362,6 +4362,87 @@ body {
 .today-final-write-copy small {
   font-size: 13px;
   line-height: 1.45;
+}
+
+.today-final-section-head {
+  margin: 0 2px 12px;
+}
+
+.today-final-section-head button {
+  color: var(--sub);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.today-final-list {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.today-final-row {
+  min-height: 0;
+  padding: 16px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  display: block;
+}
+
+.today-final-row-main {
+  min-width: 0;
+}
+
+.today-final-row strong {
+  margin-bottom: 7px;
+  font-size: 15px;
+  line-height: 1.32;
+  font-weight: 720;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.today-final-row p {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.62;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.today-final-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 9px;
+  color: var(--sub);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.today-final-meta .type {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.today-final-meta .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+.today-final-meta .dot.g {
+  background: var(--green);
+}
+
+.today-final-meta .dot.y {
+  background: var(--yellow);
 }
 
 .today-final-discovery {

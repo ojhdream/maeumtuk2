@@ -117,11 +117,17 @@ function TodayList({ entries, onGoTab }) {
       <div className="today-final-list">
         {entries.map((entry) => (
           <article className="today-final-row" key={entry.id}>
-            <div>
+            <div className="today-final-row-main">
               {entry.name && <strong>{entry.name}</strong>}
               <p>{entry.text}</p>
+              <div className="today-final-meta">
+                <span className="type">
+                  <span className={`dot ${entry.hasPhoto ? 'y' : entry.hasHand ? 'g' : 'b'}`}></span>
+                  {entry.hasPhoto ? '글 · 사진' : entry.hasHand ? '글 · 손으로' : '글'}
+                </span>
+                <span>{entry.time}</span>
+              </div>
             </div>
-            <span>{entry.time}</span>
           </article>
         ))}
       </div>
