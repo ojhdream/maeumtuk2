@@ -98,6 +98,25 @@ button {
   animation: rise 0.24s var(--ease) both;
 }
 
+.page-header {
+  margin-top: 42px;
+  margin-bottom: 28px;
+}
+
+.page-title {
+  font-size: 32px;
+  line-height: 1.15;
+  font-weight: 780;
+  letter-spacing: -0.03em;
+}
+
+.page-subtitle {
+  margin-top: 14px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: #7f8a9a;
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -2442,7 +2461,7 @@ button {
 .today-hero-title {
   margin: 0 0 10px;
   color: var(--ink);
-  font-size: var(--font-today-hero);
+  font-size: 24px;
   line-height: var(--line-today-hero);
   font-weight: var(--weight-today-hero);
   letter-spacing: -0.025em;
