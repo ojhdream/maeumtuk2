@@ -181,6 +181,27 @@ button {
   animation: dotPop 0.22s var(--pop) 0.45s both;
 }
 
+.refined-mark {
+  gap: 5px;
+  height: 12px;
+  margin-left: -1px;
+}
+
+.refined-mark .line {
+  width: 21px;
+  height: 1.7px;
+  border-radius: 999px;
+  background: #1e293b;
+  opacity: 0.9;
+}
+
+.refined-mark .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f7c948;
+}
+
 .topbar {
   display: flex;
   align-items: center;
