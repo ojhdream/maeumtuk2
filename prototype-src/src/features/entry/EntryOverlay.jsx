@@ -106,13 +106,15 @@ export default function EntryOverlay({ isOpen, onClose, onSave }) {
 
           <div className="completion-area">
             <div className="name-field">
-              <label>이 순간의 이름은?</label>
-              <span className="desc">글보다 먼저 떠오르는 이름이 있다면 붙여주세요. 선택사항이에요.</span>
+              <label>이 순간의 이름은? (선택)</label>
               <div className="name-input-wrap">
-                <input value={name} onChange={(event) => setName(event.target.value)} placeholder="내 마음대로 이름 붙이기" />
+                <input
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  placeholder="내 마음대로 이름 붙이기 예: 피곤한 저녁, 친구랑 수다, 떨리는 마음"
+                />
               </div>
             </div>
-            <p className="entry-help">마음 이름은 나중에 툭로그와 요즘 탭에서 다시 찾는 단서가 돼요.</p>
           </div>
         </div>
 
@@ -121,11 +123,11 @@ export default function EntryOverlay({ isOpen, onClose, onSave }) {
           <div className="tool-row">
             <button type="button" className={`tool-pill ${hasPhoto ? 'active' : ''}`} onClick={choosePhoto}>
               <span className="symbol">▧</span>
-              <span className="label">{hasPhoto ? '사진 변경' : '사진 추가'}</span>
+              <span className="label">{hasPhoto ? '사진 변경' : '사진만'}</span>
             </button>
             <button type="button" className={`tool-pill ${hasHand ? 'active' : ''}`} onClick={() => setHandOpen(true)}>
               <span className="symbol">〰</span>
-              <span className="label">{hasHand ? '손글씨 수정' : '손글씨 추가'}</span>
+              <span className="label">{hasHand ? '손글씨 수정' : '손글씨만'}</span>
             </button>
           </div>
           <div className="dock-note">글 없이도 괜찮아요. 사진 한 장도, 손글씨 한 줄도 툭이에요.</div>

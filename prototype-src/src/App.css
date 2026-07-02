@@ -1988,6 +1988,7 @@ button {
 }
 
 .name-input-wrap {
+  margin-top: 12px;
   height: 50px;
   border-radius: 18px;
   background: #fff;
