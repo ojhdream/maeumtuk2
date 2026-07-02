@@ -4328,9 +4328,40 @@ body {
 }
 
 .today-final-write {
-  min-height: 100px;
+  min-height: 0;
+  padding: 18px 42px 18px 18px;
+  grid-template-columns: 56px 1fr;
+  gap: 14px;
   margin-top: -4px;
   margin-bottom: 28px;
+}
+
+.today-final-write-mark {
+  width: 56px;
+  height: 56px;
+}
+
+.today-final-write-mark i {
+  width: 28px;
+}
+
+.today-final-write-mark b {
+  right: 14px;
+  top: 25px;
+  width: 8px;
+  height: 8px;
+}
+
+.today-final-write-copy strong {
+  margin-bottom: 6px;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 750;
+}
+
+.today-final-write-copy small {
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .today-final-discovery {
