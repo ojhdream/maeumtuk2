@@ -4204,3 +4204,135 @@ button {
     font-size: 22px;
   }
 }
+
+/* Release reference: restore tab header typography/background while keeping entry overlay intact. */
+:root {
+  --bg: #f7f9fd;
+  --paper: #fff;
+  --line: #e6ecf5;
+}
+
+html,
+body {
+  background: #eef2f7;
+}
+
+.phone {
+  background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.14);
+}
+
+.screen-today,
+.screen-log,
+.screen-now,
+.screen-me,
+.today-screen.today-final {
+  background: #f7f9fd;
+}
+
+.brand {
+  font-size: 20px;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+.date,
+.today-final-hero .date {
+  color: var(--sub);
+  font-size: 13px;
+  line-height: 1.35;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.hero,
+.today-final-title {
+  color: var(--ink);
+  font-size: 30px;
+  line-height: 1.16;
+  font-weight: 780;
+  letter-spacing: -1px;
+}
+
+.guide-copy,
+.today-final-guide {
+  color: #5f6d82;
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: -0.03em;
+}
+
+.page-title,
+.log-title {
+  color: var(--ink);
+  font-size: 30px;
+  line-height: 1.16;
+  font-weight: 780;
+  letter-spacing: -1px;
+}
+
+.section-head h2,
+.today-final-section-head h2 {
+  color: var(--ink);
+  font-size: 19px;
+  font-weight: 720;
+  letter-spacing: -0.04em;
+}
+
+.now-hero-card h2,
+.now-discovery h2,
+.now-locked-compact h2 {
+  letter-spacing: -0.06em;
+}
+
+.today-final .topbar {
+  margin-bottom: 28px;
+}
+
+.today-final-hero {
+  margin-bottom: 16px;
+}
+
+.today-final-title {
+  margin-bottom: 14px;
+}
+
+.today-final-maeumi {
+  width: 118px;
+  height: 74px;
+  margin: 12px auto -2px;
+}
+
+.today-final-maeumi img {
+  width: 96px;
+}
+
+.today-final-maeumi span {
+  width: 11px;
+  height: 11px;
+  right: 12px;
+  top: 4px;
+}
+
+.today-final-write {
+  min-height: 100px;
+  margin-bottom: 16px;
+}
+
+.today-final-discovery {
+  padding: 18px 20px 17px;
+  margin-bottom: 24px;
+}
+
+.today-final-discovery-copy h2 {
+  font-size: 16px;
+  line-height: 1.42;
+}
+
+.today-final-discovery-copy p {
+  font-size: 13px;
+}
+
+.today-final-count {
+  font-size: 22px;
+}
