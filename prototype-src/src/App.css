@@ -2791,7 +2791,7 @@ button {
 .entry-scroll textarea {
   min-height: 270px;
   color: #2f3b4d;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.62;
   font-weight: 430;
   letter-spacing: -0.01em;
@@ -4296,6 +4296,10 @@ body {
 
 .today-final-title {
   margin-bottom: 14px;
+  font-size: 26px;
+  line-height: 1.22;
+  font-weight: 500;
+  letter-spacing: -0.04em;
 }
 
 .today-final-guide-row {
@@ -4326,7 +4330,7 @@ body {
 .today-final-write {
   min-height: 100px;
   margin-top: -4px;
-  margin-bottom: 16px;
+  margin-bottom: 28px;
 }
 
 .today-final-discovery {
