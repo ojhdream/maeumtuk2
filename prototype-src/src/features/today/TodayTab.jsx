@@ -71,25 +71,22 @@ function TodayInsight({ stage, onGoTab }) {
 
 function MiniProgress({ count, onGoTab }) {
   const safeCount = Math.min(10, count)
-  const remain = Math.max(0, 10 - safeCount)
-  const dots = Array.from({ length: 10 }, (_, index) => index < safeCount)
+  const percent = (safeCount / 10) * 100
 
   return (
     <section className="today-mini-progress" onClick={() => onGoTab('now')}>
-      <div className="mini-progress-main">
-        <span className="mini-progress-sprout" aria-hidden="true">🌱</span>
-        <div className="mini-progress-copy">
-          <div className="mini-progress-title">조금씩 쌓이고 있어요</div>
-          <div className="mini-progress-sub">
-            {remain > 0 ? `첫 리포트까지 ${remain}개의 툭` : '첫 리포트가 열렸어요'}
-          </div>
+      <div className="mini-progress-copy">
+        <div className="mini-progress-title">요즘의 나</div>
+        <div className="mini-progress-sub">
+          {safeCount < 10 ? `${safeCount}개의 툭이 모였어요.` : '요즘의 나를 만나볼 수 있어요.'}
         </div>
       </div>
-      <div className="mini-progress-dots" aria-label={`10개 중 ${safeCount}개`}>
-        {dots.map((filled, index) => (
-          <span className={filled ? 'filled' : ''} key={index}></span>
-        ))}
+
+      <div className="mini-progress-line" aria-label={`10개 중 ${safeCount}개`}>
+        <span className="mini-progress-fill" style={{ width: `${percent}%` }} />
       </div>
+
+      {safeCount < 10 && <div className="mini-progress-caption">10개의 툭이 모이면 요즘의 내가 보여요.</div>}
     </section>
   )
 }
