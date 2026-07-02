@@ -4123,38 +4123,45 @@ button {
 
 .today-final-list {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   margin-bottom: 22px;
 }
 
 .today-final-row {
-  min-height: 72px;
-  padding: 15px 18px;
+  min-height: 58px;
+  padding: 11px 14px;
   border: 1px solid rgba(228, 234, 242, 0.92);
-  border-radius: 21px;
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 5px 15px rgba(18, 34, 56, 0.03);
+  box-shadow: 0 3px 10px rgba(18, 34, 56, 0.025);
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 14px;
+  gap: 12px;
   align-items: center;
+}
+
+.today-final-row > div {
+  min-width: 0;
 }
 
 .today-final-row strong {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   color: var(--ink);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.32;
   font-weight: 760;
   letter-spacing: -0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .today-final-row p {
   margin: 0;
   color: #5f6d82;
-  font-size: 14px;
-  line-height: 1.42;
+  font-size: 13px;
+  line-height: 1.35;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -4162,7 +4169,7 @@ button {
 
 .today-final-row > span {
   color: #7f8a9a;
-  font-size: 14px;
+  font-size: 13px;
   white-space: nowrap;
 }
 
