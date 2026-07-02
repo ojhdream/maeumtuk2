@@ -29,8 +29,8 @@ export default function TodayTab({ stage, count, entries, onOpenEntry, onCycle, 
 
       {hasEntries ? (
         <>
+          <MiniProgress count={count} onGoTab={onGoTab} />
           <TodayList entries={recentEntries} onGoTab={onGoTab} />
-          <TodayInsight stage={stage} onGoTab={onGoTab} />
         </>
       ) : (
         <ZeroState count={count} onGoTab={onGoTab} />
@@ -71,12 +71,23 @@ function TodayInsight({ stage, onGoTab }) {
 
 function MiniProgress({ count, onGoTab }) {
   const safeCount = Math.min(10, count)
+  const dots = Array.from({ length: 10 }, (_, index) => index < safeCount)
 
   return (
     <section className="today-mini-progress" onClick={() => onGoTab('now')}>
-      <span className="mini-progress-dot"></span>
-      <span>{safeCount}/10</span>
-      <p>10툭이 모이면 첫 발견이 열려요.</p>
+      <div className="mini-progress-main">
+        <span className="mini-progress-sprout" aria-hidden="true">🌱</span>
+        <div>
+          <strong>{safeCount}/10</strong>
+          <p>조금씩 나를 알아가는 중</p>
+        </div>
+      </div>
+      <div className="mini-progress-dots" aria-label={`10개 중 ${safeCount}개`}>
+        {dots.map((filled, index) => (
+          <span className={filled ? 'filled' : ''} key={index}></span>
+        ))}
+      </div>
+      <span className="mini-progress-next" aria-hidden="true">›</span>
     </section>
   )
 }
@@ -96,15 +107,15 @@ function TodayList({ entries, onGoTab }) {
       <div className="today-list compact">
         {entries.map((entry) => (
           <article className="today-row" key={entry.id}>
-            {entry.name && <div className="today-title">{entry.name}</div>}
-            <p>{entry.text}</p>
-            <div className="today-meta">
+            <div className="today-meta top">
               <span className="type">
                 <span className={`dot ${entry.photo ? 'y' : entry.hand ? 'g' : 'b'}`}></span>
                 {entry.type}
               </span>
               <span>{entry.time}</span>
             </div>
+            {entry.name && <div className="today-title">{entry.name}</div>}
+            <p>{entry.text}</p>
           </article>
         ))}
       </div>
