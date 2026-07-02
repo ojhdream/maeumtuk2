@@ -70,8 +70,8 @@ export default function EntryOverlay({ isOpen, onClose, onSave }) {
                 onChange={(event) => setText(event.target.value)}
                 onFocus={() => setIsComposing(true)}
                 onBlur={() => setIsComposing(false)}
-                placeholder={`스친 일, 생각, 해야 할 일.
-떠오른 만큼만 남겨보세요.`}
+                autoFocus
+                placeholder={`지금 떠오른 것을 편하게 남겨보세요.`}
               ></textarea>
               <div className="compose-maeumi" aria-hidden="true">
                 <img className="compose-maeumi-img" src="./maeumi-base.svg" alt="" />
@@ -109,7 +109,7 @@ export default function EntryOverlay({ isOpen, onClose, onSave }) {
               <label>이 순간의 이름은?</label>
               <span className="desc">글보다 먼저 떠오르는 이름이 있다면 붙여주세요. 선택사항이에요.</span>
               <div className="name-input-wrap">
-                <input value={name} onChange={(event) => setName(event.target.value)} placeholder="예: 좋은 저녁, 괜찮아지는 중" />
+                <input value={name} onChange={(event) => setName(event.target.value)} placeholder="내 마음대로 이름 붙이기" />
               </div>
             </div>
             <p className="entry-help">마음 이름은 나중에 툭로그와 요즘 탭에서 다시 찾는 단서가 돼요.</p>
@@ -121,11 +121,11 @@ export default function EntryOverlay({ isOpen, onClose, onSave }) {
           <div className="tool-row">
             <button type="button" className={`tool-pill ${hasPhoto ? 'active' : ''}`} onClick={choosePhoto}>
               <span className="symbol">▧</span>
-              <span className="label">{hasPhoto ? '사진 변경' : '사진'}</span>
+              <span className="label">{hasPhoto ? '사진 변경' : '사진 추가'}</span>
             </button>
             <button type="button" className={`tool-pill ${hasHand ? 'active' : ''}`} onClick={() => setHandOpen(true)}>
               <span className="symbol">〰</span>
-              <span className="label">{hasHand ? '손그림 수정' : '손으로'}</span>
+              <span className="label">{hasHand ? '손글씨 수정' : '손글씨 추가'}</span>
             </button>
           </div>
           <div className="dock-note">글 없이도 괜찮아요. 사진 한 장도, 손글씨 한 줄도 툭이에요.</div>
