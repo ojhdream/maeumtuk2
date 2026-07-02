@@ -71,15 +71,18 @@ function TodayInsight({ stage, onGoTab }) {
 
 function MiniProgress({ count, onGoTab }) {
   const safeCount = Math.min(10, count)
+  const remain = Math.max(0, 10 - safeCount)
   const dots = Array.from({ length: 10 }, (_, index) => index < safeCount)
 
   return (
     <section className="today-mini-progress" onClick={() => onGoTab('now')}>
       <div className="mini-progress-main">
         <span className="mini-progress-sprout" aria-hidden="true">🌱</span>
-        <div>
-          <strong>{safeCount}/10</strong>
-          <p>조금씩 나를 알아가는 중</p>
+        <div className="mini-progress-copy">
+          <div className="mini-progress-title">조금씩 쌓이고 있어요</div>
+          <div className="mini-progress-sub">
+            {remain > 0 ? `첫 리포트까지 ${remain}개의 툭` : '첫 리포트가 열렸어요'}
+          </div>
         </div>
       </div>
       <div className="mini-progress-dots" aria-label={`10개 중 ${safeCount}개`}>
@@ -87,7 +90,6 @@ function MiniProgress({ count, onGoTab }) {
           <span className={filled ? 'filled' : ''} key={index}></span>
         ))}
       </div>
-      <span className="mini-progress-next" aria-hidden="true">›</span>
     </section>
   )
 }

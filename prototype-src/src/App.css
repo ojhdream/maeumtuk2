@@ -2565,14 +2565,12 @@ button {
 .today-mini-progress {
   min-height: 76px;
   margin: 0 0 22px;
-  padding: 14px 15px;
+  padding: 22px 24px;
   border: 1px solid rgba(230, 236, 245, 0.95);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.9);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 12px;
+  gap: 14px;
   cursor: pointer;
 }
 
@@ -2593,18 +2591,21 @@ button {
   font-size: 18px;
 }
 
-.today-mini-progress strong {
-  display: block;
-  color: var(--ink);
-  font-size: 15px;
-  font-weight: 760;
-  line-height: 1.2;
+.mini-progress-copy {
+  min-width: 0;
 }
 
-.today-mini-progress p {
-  margin: 3px 0 0;
-  color: #8a96aa;
-  font-size: 12.5px;
+.mini-progress-title {
+  color: #1d2a44;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.mini-progress-sub {
+  margin-top: 4px;
+  color: #7d8795;
+  font-size: 14px;
   line-height: 1.35;
 }
 
@@ -2623,12 +2624,6 @@ button {
 
 .mini-progress-dots span.filled {
   background: #f7c948;
-}
-
-.mini-progress-next {
-  color: var(--ink);
-  font-size: 18px;
-  font-weight: 700;
 }
 
 .today-list.compact .today-meta.top {
