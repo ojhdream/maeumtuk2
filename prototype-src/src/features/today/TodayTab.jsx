@@ -67,28 +67,36 @@ function DiscoveryCard({ count, onGoTab }) {
   const safeCount = Math.min(10, Math.max(0, count))
   const percent = (safeCount / 10) * 100
   const isReady = safeCount >= 10
+  const note =
+    safeCount === 0
+      ? '툭이 모이면 발견이 시작돼요.'
+      : isReady
+        ? '요즘의 당신 리포트가 열렸어요.'
+        : `${10 - safeCount}개만 더 남기면 첫 리포트를 보여드릴게요.`
 
   return (
-    <section className="today-final-discovery" onClick={() => onGoTab('now')}>
-      <span className="today-final-sprout" aria-hidden="true">⌁</span>
-
-      <div className="today-final-discovery-copy">
-        <h2>
-          지금은 기록만 하세요.
-          <br />
-          발견은 마음툭이 이어갈게요.
-        </h2>
-        <p>
-          {isReady
-            ? '요즘 탭에서 지금의 나를 만나볼 수 있어요.'
-            : '10개의 툭이 모이면 요즘의 내가 보여요.'}
-        </p>
+    <section className="progress-card panel today-final-progress-card">
+      <div className="progress-top">
+        <div>
+          <strong>
+            10개의 툭이 모이면
+            <br />
+            요즘의 내가 보여요.
+          </strong>
+          <span>{safeCount === 0 ? '첫 조각부터 시작해요.' : `지금은 ${safeCount}개의 조각이 모였어요.`}</span>
+        </div>
+        <div className="progress-count">{safeCount}/10</div>
       </div>
 
-      <strong className="today-final-count">{safeCount} / 10</strong>
+      <div className="progress-track" aria-label={`10개 중 ${safeCount}개`}>
+        <i style={{ '--w': `${percent}%` }}></i>
+      </div>
 
-      <div className="today-final-progress" aria-label={`10개 중 ${safeCount}개`}>
-        <span style={{ width: `${percent}%` }} />
+      <div className="progress-note">
+        <span>{note}</span>
+        <button type="button" onClick={() => onGoTab('now')}>
+          요즘 보기
+        </button>
       </div>
     </section>
   )
