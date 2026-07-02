@@ -47,8 +47,8 @@ export default function TodayTab({ stage, count, entries, onOpenEntry, onCycle, 
 
       {hasEntries ? (
         <>
-          <DiscoveryCard count={count} onGoTab={onGoTab} />
           <TodayList entries={recentEntries} onGoTab={onGoTab} />
+          <DiscoveryCard count={count} onGoTab={onGoTab} />
         </>
       ) : (
         <>
