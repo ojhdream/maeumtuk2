@@ -4291,32 +4291,41 @@ body {
 }
 
 .today-final-hero {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .today-final-title {
   margin-bottom: 14px;
 }
 
+.today-final-guide-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
 .today-final-maeumi {
-  width: 118px;
-  height: 74px;
-  margin: 12px auto -2px;
+  flex: 0 0 auto;
+  width: 92px;
+  height: 58px;
+  margin: 0 8px 2px 0;
 }
 
 .today-final-maeumi img {
-  width: 96px;
+  width: 76px;
 }
 
 .today-final-maeumi span {
-  width: 11px;
-  height: 11px;
-  right: 12px;
-  top: 4px;
+  width: 9px;
+  height: 9px;
+  right: 10px;
+  top: 3px;
 }
 
 .today-final-write {
   min-height: 100px;
+  margin-top: -4px;
   margin-bottom: 16px;
 }
 

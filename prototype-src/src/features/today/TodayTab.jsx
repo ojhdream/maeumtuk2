@@ -17,17 +17,19 @@ export default function TodayTab({ stage, count, entries, onOpenEntry, onCycle, 
           무엇이 <span className="accent">남았나요?</span>
         </h1>
 
-        <p className="today-final-guide">
-          문득 스친 생각,
-          <br />
-          사진 한 장,
-          <br />
-          한 단어도 괜찮아요.
-        </p>
+        <div className="today-final-guide-row">
+          <p className="today-final-guide">
+            문득 스친 생각,
+            <br />
+            사진 한 장,
+            <br />
+            한 단어도 괜찮아요.
+          </p>
 
-        <div className="today-final-maeumi" aria-hidden="true">
-          <img src="./maeumi-base.svg" alt="" />
-          <span></span>
+          <div className="today-final-maeumi" aria-hidden="true">
+            <img src="./maeumi-base.svg" alt="" />
+            <span></span>
+          </div>
         </div>
       </header>
 
