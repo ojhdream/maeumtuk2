@@ -9,7 +9,7 @@ export default function NowTab({ stage, count }) {
 
       <header className="now-editorial-hero">
         <h1 className="hero big">요즘</h1>
-        <p className="subcopy now-copy">남긴 툭을 모아 살펴봐요.</p>
+        <p className="subcopy now-copy">최근의 당신이 조금씩 보이는 곳</p>
       </header>
 
       {locked ? (
