@@ -9,11 +9,7 @@ export default function NowTab({ stage, count }) {
 
       <header className="now-editorial-hero">
         <h1 className="hero big">요즘</h1>
-        <p className="subcopy now-copy">
-          툭 남긴 조각들이
-          <br />
-          조금씩 나를 비춰주는 곳.
-        </p>
+        <p className="subcopy now-copy">남긴 툭을 모아 살펴봐요.</p>
       </header>
 
       {locked ? (
@@ -21,7 +17,7 @@ export default function NowTab({ stage, count }) {
       ) : (
         <>
           <section className="now-discovery panel">
-            <span className="now-eyebrow">요즘의 한 문장</span>
+            <span className="now-eyebrow">오늘의 한 문장</span>
             <h2>
               걱정하면서도
               <br />
